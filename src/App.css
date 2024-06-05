@@ -30,6 +30,19 @@ main {
     align-items: center;
 }
 
-.die-num{
+.die-num {
     font-size: 2rem;
+}
+
+.btn-roll {
+    background-color: #5035FF;
+    box-shadow: 0px 3.2px 7.68px 0px #0000002E;
+    color: #fff;
+    border-radius: 4px;
+    font-family: "Karla", sans-serif;
+    border: none;
+    font-size: 1rem;
+    padding: .75em 2em;
+    margin-top: 2em;
+    cursor: pointer;
 }
