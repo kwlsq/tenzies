@@ -20,10 +20,28 @@ function App() {
   }
 
   function generateNewDice() {
-    setDiceNumbers(() => allNewDice())
+    setDiceNumbers((prevDiceNumbers) => {
+      return prevDiceNumbers.map((dice) =>
+        dice.isHeld ? dice : { ...dice, value: Math.ceil(Math.random() * 6) }
+      )
+    })
   }
 
-  const diceElements = diceNumbers.map((diceNumber) => <Die value={diceNumbers.value} key={diceNumbers.id} />)
+  function holdDice(id) {
+    setDiceNumbers((prevDiceNumbers) => {
+      return prevDiceNumbers.map((dice) =>
+        dice.id === id ? { ...dice, isHeld: !dice.isHeld } : dice
+      )
+    })
+  }
+
+  const diceElements = diceNumbers.map((diceNumber) => {
+    return <Die
+      value={diceNumber.value}
+      key={diceNumber.id}
+      isHeld={diceNumber.isHeld}
+      hold={() => holdDice(diceNumber.id)} />
+  })
 
   return (
     <main>
