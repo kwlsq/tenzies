@@ -22,11 +22,16 @@ function App() {
   }
 
   function generateNewDice() {
-    setDiceNumbers((prevDiceNumbers) => {
-      return prevDiceNumbers.map((dice) =>
-        dice.isHeld ? dice : { ...dice, value: Math.ceil(Math.random() * 6) }
-      )
-    })
+    if (tenzies) {
+      setTenzies(false)
+      setDiceNumbers(allNewDice())
+    } else {
+      setDiceNumbers((prevDiceNumbers) => {
+        return prevDiceNumbers.map((dice) =>
+          dice.isHeld ? dice : { ...dice, value: Math.ceil(Math.random() * 6) }
+        )
+      })
+    }
   }
 
   function holdDice(id) {
